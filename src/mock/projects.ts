@@ -1,7 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { defineFakeRoute } from 'vite-plugin-fake-server/client'
-import Mock from 'mockjs'
 
 // 模拟从文件读取矩阵数据
 function readMatrixFromFile(filename) {
@@ -52,7 +51,9 @@ export default defineFakeRoute([
       ]
 
       if (project_name) {
-        projects = projects.filter(p => p.project_name.includes(project_name))
+        if (typeof project_name === 'string') {
+          projects = projects.filter(p => p.project_name.includes(project_name))
+        }
       }
       if (status) {
         // eslint-disable-next-line eqeqeq
@@ -68,14 +69,14 @@ export default defineFakeRoute([
     url: '/mock/projects/:id',
     method: 'get',
     response: ({ params }) => {
-      const id = Number.parseInt(params.id)
+      const id = Number.parseInt(<string>params.id)
       const projectNames = ['test_repo', 'alpha_project', 'beta_initiative']
       return {
         project_id: id,
         project_name: projectNames[id - 1] || `Project ${id}`,
         ca_matrix: caMatrix,
         cr_matrix: crMatrix,
-        coordination_date: "2024-10-10T00:25:10.563021",
+        coordination_date: '2024-10-10T00:25:10.563021',
         create_time: '2024-10-10T00:25:10.563021',
         mc_stc_value: 0.28071433631923476,
       }

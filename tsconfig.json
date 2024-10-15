@@ -16,7 +16,8 @@
       "vite/client",
       "vite-plugin-pages/client",
       "vite-plugin-vue-meta-layouts/client",
-      "element-plus/global"
+      "element-plus/global",
+      "node"
     ],
     "allowImportingTsExtensions": true,
     "allowJs": true,
@@ -35,7 +36,7 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": false,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": false
   },
   "references": [
     {
@@ -46,6 +47,9 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "vite.config.ts",
+    "vite/**/*.ts",
+    "src/mock/*.ts"
   ]
 }
