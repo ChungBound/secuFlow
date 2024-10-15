@@ -3,7 +3,6 @@ import axios from 'axios'
 // import qs from 'qs'
 import Message from 'vue-m-message'
 import useUserStore from '@/store/modules/user'
-import Mock from "mockjs";
 
 const api = axios.create({
   baseURL: (import.meta.env.DEV && import.meta.env.VITE_OPEN_PROXY === 'true') ? '/proxy/' : import.meta.env.VITE_APP_API_BASEURL,

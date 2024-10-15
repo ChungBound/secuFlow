@@ -451,8 +451,8 @@ onMounted(() => {
   flex-direction: column;
   height: 82vh;
   padding: 20px;
-  background-color: #f5f7fa;
   font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
 }
 
 .project-header {
@@ -461,9 +461,9 @@ onMounted(() => {
 }
 
 .project-header h1 {
+  margin-bottom: 5px;
   font-size: 24px;
   color: #2c3e50;
-  margin-bottom: 5px;
 }
 
 .project-header p {
@@ -479,25 +479,26 @@ onMounted(() => {
 
 .graph-wrapper {
   width: 40%;
+  padding: 15px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 15px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .legend-wrapper {
-  width: 18%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: 20px;
+  justify-content: flex-start;
+  width: 18%;
 }
 
-.legend, .mc-stc-wrapper {
+.legend,
+ .mc-stc-wrapper {
+  padding: 15px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 15px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .graph-area {
@@ -520,12 +521,14 @@ onMounted(() => {
   gap: 10px;
 }
 
-.zoom-controls, .search-control {
+.zoom-controls,
+ .search-control {
   display: flex;
   gap: 5px;
 }
 
-.zoom-controls button, .search-control button {
+.zoom-controls button,
+ .search-control button {
   padding: 5px 10px;
   //background-color: #3498db;
   //color: white;
@@ -536,29 +539,31 @@ onMounted(() => {
   transition: background-color 0.3s;
 }
 
-.zoom-controls button:hover, .search-control button:hover {
+.zoom-controls button:hover,
+ .search-control button:hover {
   background-color: #2980b9;
 }
 
 .search-control input {
-  padding: 5px;
   width: 150px;
+  padding: 5px;
+  font-size: 14px;
   border: 1px solid #bdc3c7;
   border-radius: 3px;
-  font-size: 14px;
 }
 
-.legend h4, .mc-stc-wrapper h3 {
+.legend h4,
+ .mc-stc-wrapper h3 {
+  margin-bottom: 10px;
   font-size: 16px;
   color: #34495e;
-  margin-bottom: 10px;
 }
 
 .legend h5 {
-  font-size: 14px;
-  color: #7f8c8d;
   margin-top: 10px;
   margin-bottom: 5px;
+  font-size: 14px;
+  color: #7f8c8d;
 }
 
 .legend-item {
@@ -570,8 +575,8 @@ onMounted(() => {
 .color-dot {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
   margin-right: 5px;
+  border-radius: 50%;
 }
 
 .color-line {
@@ -583,9 +588,9 @@ onMounted(() => {
 .progress-bar {
   width: 100%;
   height: 20px;
+  overflow: hidden;
   background-color: #ecf0f1;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .progress {
@@ -597,25 +602,25 @@ onMounted(() => {
 /* Sidebar styles remain unchanged */
 .sidebar {
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
+  z-index: 11;
   width: 300px;
   height: 80vh;
-  background-color: white;
-  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
   padding: 20px;
   overflow-y: auto;
-  z-index: 11;
+  background-color: white;
+  box-shadow: -2px 0 5px rgb(0 0 0 / 10%);
 }
 
 .close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
+  font-size: 20px;
+  color: #7f8c8d;
+  cursor: pointer;
   background: none;
   border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #7f8c8d;
 }
 </style>

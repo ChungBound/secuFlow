@@ -22,21 +22,21 @@
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "strict": false,
+    "noFallthroughCasesInSwitch": false,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "useUnknownInCatchVariables": false,
-    "noEmit": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "skipLibCheck": true,
-    "ignoreDeprecations": "5.0",
     "noImplicitThis": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": false,
+    "useUnknownInCatchVariables": false,
+    "noEmit": true,
+    "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": false
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": false,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "ignoreDeprecations": "5.0"
   },
   "references": [
     {
@@ -48,8 +48,6 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "vite.config.ts",
-    "vite/**/*.ts",
     "src/mock/*.ts"
   ]
 }

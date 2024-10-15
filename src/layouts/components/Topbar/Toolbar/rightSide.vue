@@ -3,7 +3,6 @@ import NavSearch from './NavSearch/index.vue'
 import Fullscreen from './Fullscreen/index.vue'
 import PageReload from './PageReload/index.vue'
 import ColorScheme from './ColorScheme/index.vue'
-import eventBus from '@/utils/eventBus'
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
 

@@ -105,12 +105,12 @@ function testAccount(account: string) {
       <ElButton :loading="loading" type="primary" size="large" style="width: 100%;" @click.prevent="handleLogin">
         LOGIN
       </ElButton>
-<!--      <div class="mt-4 flex-center gap-2 text-sm color-[var(&#45;&#45;el-text-color-secondary)]">-->
-<!--        还没有帐号?-->
-<!--        <ElLink type="primary" :underline="false" @click="emits('onRegister', form.account)">-->
-<!--          创建新帐号-->
-<!--        </ElLink>-->
-<!--      </div>-->
+      <!--      <div class="mt-4 flex-center gap-2 text-sm color-[var(&#45;&#45;el-text-color-secondary)]"> -->
+      <!--        还没有帐号? -->
+      <!--        <ElLink type="primary" :underline="false" @click="emits('onRegister', form.account)"> -->
+      <!--          创建新帐号 -->
+      <!--        </ElLink> -->
+      <!--      </div> -->
     </template>
     <template v-else-if="type === 'qrcode'">
       <div class="flex-col-center">

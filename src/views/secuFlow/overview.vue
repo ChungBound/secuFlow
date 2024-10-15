@@ -28,7 +28,7 @@ const projectData = reactive({
 })
 
 // GET 请求
-api.get('overview/',{
+api.get('overview/', {
   baseURL: '/mock/',
 }).then((res) => {
   console.log(res)
@@ -66,7 +66,7 @@ function clickProject(level) {
             </div>
           </div>
         </div>
-        <div class="card low-risk project-card" @click="clickProject('low')">
+        <div class="card project-card low-risk" @click="clickProject('low')">
           <div class="card-content">
             <div class="card-title">
               LOW - RISK
@@ -79,7 +79,7 @@ function clickProject(level) {
             MC-STC VALUE => {{ projectData.lowRiskDescription }}
           </div>
         </div>
-        <div class="card medium-risk project-card" @click="clickProject('mid')">
+        <div class="card project-card medium-risk" @click="clickProject('mid')">
           <div class="card-content">
             <div class="card-title">
               MEDIUM - RISK
@@ -92,7 +92,7 @@ function clickProject(level) {
             MC-STC VALUE => {{ projectData.mediumRiskDescription }}
           </div>
         </div>
-        <div class="card high-risk project-card" @click="clickProject('high')">
+        <div class="card project-card high-risk" @click="clickProject('high')">
           <div class="card-content">
             <div class="card-title">
               HIGH - RISK
@@ -143,10 +143,10 @@ function clickProject(level) {
   margin: 10px;
   color: white;
   text-align: left;
+  cursor: pointer;
   background-color: #52b6b9;
   border-radius: 8px;
   transition: box-shadow 0.3s ease;
-  cursor: pointer;
 }
 
 .card:hover {

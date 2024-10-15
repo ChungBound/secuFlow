@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import hotkeys from 'hotkeys-js'
 import Header from './components/Header/index.vue'
-import MainSidebar from './components/MainSidebar/index.vue'
-import SubSidebar from './components/SubSidebar/index.vue'
 import Topbar from './components/Topbar/index.vue'
 import Search from './components/Search/index.vue'
 import AppSetting from './components/AppSetting/index.vue'
@@ -102,8 +100,8 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
       <Header />
       <div class="wrapper">
         <div class="sidebar-container" :class="{ show: settingsStore.mode === 'mobile' && !settingsStore.settings.menu.subMenuCollapse }">
-<!--          <MainSidebar />-->
-<!--          <SubSidebar />-->
+          <!--          <MainSidebar /> -->
+          <!--          <SubSidebar /> -->
         </div>
         <div class="sidebar-mask" :class="{ show: settingsStore.mode === 'mobile' && !settingsStore.settings.menu.subMenuCollapse }" @click="settingsStore.toggleSidebarCollapse()" />
         <div class="main-container">

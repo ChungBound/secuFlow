@@ -131,7 +131,7 @@ function transformStatus(status: string): string {
 
       <!-- Buttons -->
       <div class="buttons">
-        <HButton style="justify-content: center" @click="handleSearch">
+        <HButton style="justify-content: center;" @click="handleSearch">
           Search
         </HButton>
         <!--        <el-button type="primary" @click="handleSearch"> -->
@@ -140,7 +140,7 @@ function transformStatus(status: string): string {
         <!--        <el-button style="margin-top: 10px;" @click="handleReset"> -->
         <!--          Reset -->
         <!--        </el-button> -->
-        <HButton outline style="margin-top: 10px; justify-content: center" @click="handleReset">
+        <HButton outline style=" justify-content: center;margin-top: 10px;" @click="handleReset">
           Reset
         </HButton>
       </div>

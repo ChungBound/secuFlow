@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue'
-import { Network, Options, Node, Edge } from 'vis-network'
+import { computed, onMounted, ref } from 'vue'
+import type { Edge, Node, Options } from 'vis-network'
+import { Network } from 'vis-network'
 import { DataSet } from 'vis-data'
 import api from '@/api'
 
@@ -56,17 +57,17 @@ const nodeGroups = {
   user: {
     color: { background: '#3498db', border: '#2980b9' },
     hover: { background: '#5faee3', border: '#2980b9' },
-    highlight: { background: '#a6d0f3', border: '#2980b9' }
+    highlight: { background: '#a6d0f3', border: '#2980b9' },
   },
   admin: {
     color: { background: '#e74c3c', border: '#c0392b' },
     hover: { background: '#ed7669', border: '#c0392b' },
-    highlight: { background: '#f5b7b1', border: '#c0392b' }
+    highlight: { background: '#f5b7b1', border: '#c0392b' },
   },
   guest: {
     color: { background: '#2ecc71', border: '#27ae60' },
     hover: { background: '#58d68d', border: '#27ae60' },
-    highlight: { background: '#a9dfbf', border: '#27ae60' }
+    highlight: { background: '#a9dfbf', border: '#27ae60' },
   },
 }
 
@@ -76,7 +77,7 @@ const edgeColors = {
   'user-guest': { color: '#c8e6c9', highlight: '#2ecc71', hover: '#a5d6a7' },
   'admin-admin': { color: '#e1bee7', highlight: '#9b59b6', hover: '#ce93d8' },
   'admin-guest': { color: '#fff9c4', highlight: '#f1c40f', hover: '#fff59d' },
-  'guest-guest': { color: '#b2dfdb', highlight: '#1abc9c', hover: '#80cbc4' }
+  'guest-guest': { color: '#b2dfdb', highlight: '#1abc9c', hover: '#80cbc4' },
 }
 
 function convertMatrixToGraph(matrix: MatrixData): GraphData {
@@ -106,7 +107,7 @@ function convertMatrixToGraph(matrix: MatrixData): GraphData {
       group,
       connections,
       totalWeight,
-      connectionDetails
+      connectionDetails,
     }
     nodes.push(node)
     nodeMap.set(email, node)
@@ -125,7 +126,7 @@ function convertMatrixToGraph(matrix: MatrixData): GraphData {
             to: toEmail,
             value: Math.log(weight + 1),
             title: `Weight: ${weight}`,
-            color: edgeColors[colorKey]
+            color: edgeColors[colorKey],
           })
           edgeSet.add(edgeId)
         }
@@ -152,9 +153,9 @@ function createNetwork(container: HTMLElement, data: { nodes: DataSet<NodeData>,
       color: {
         highlight: {
           border: '#ffa000',
-          background: '#ffecb3'
-        }
-      }
+          background: '#ffecb3',
+        },
+      },
     },
     edges: {
       width: 0.15,
@@ -245,22 +246,23 @@ function closeSidebar() {
 }
 
 function searchNodes() {
-  if (!nodes.value || !network) return
+  if (!nodes.value || !network) { return }
 
   const searchResults = nodes.value.get({
-    filter: function (node) {
-      return node.id.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-        node.id.split('@')[0].toLowerCase().includes(searchQuery.value.toLowerCase())
-    }
+    filter(node) {
+      return node.id.toLowerCase().includes(searchQuery.value.toLowerCase())
+        || node.id.split('@')[0].toLowerCase().includes(searchQuery.value.toLowerCase())
+    },
   })
 
   if (searchResults.length > 0) {
     network.selectNodes(searchResults.map(node => node.id))
     network.focus(searchResults[0].id, {
       scale: 1.2,
-      animation: true
+      animation: true,
     })
-  } else {
+  }
+  else {
     alert('No nodes found matching the search query.')
   }
 }
@@ -268,16 +270,24 @@ function searchNodes() {
 
 <template>
   <div class="network-container">
-    <div ref="networkContainer" class="graph-area"></div>
+    <div ref="networkContainer" class="graph-area" />
     <div class="controls">
       <div class="zoom-controls">
-        <button @click="zoomControls.zoomIn">+</button>
-        <button @click="zoomControls.zoomOut">-</button>
-        <button @click="zoomControls.resetZoom">Reset</button>
+        <button @click="zoomControls.zoomIn">
+          +
+        </button>
+        <button @click="zoomControls.zoomOut">
+          -
+        </button>
+        <button @click="zoomControls.resetZoom">
+          Reset
+        </button>
       </div>
       <div class="search-controls">
         <input v-model="searchQuery" placeholder="Search by name or email" @keyup.enter="searchNodes">
-        <button @click="searchNodes">Search</button>
+        <button @click="searchNodes">
+          Search
+        </button>
       </div>
     </div>
     <div class="legend">
@@ -285,21 +295,23 @@ function searchNodes() {
       <div class="node-types">
         <h5>Node Types:</h5>
         <div v-for="(group, type) in nodeGroups" :key="type" class="legend-item">
-          <span class="color-dot" :style="{ backgroundColor: group.color.background }"></span>
+          <span class="color-dot" :style="{ backgroundColor: group.color.background }" />
           <span>{{ type }}</span>
         </div>
       </div>
       <div class="edge-types">
         <h5>Edge Types:</h5>
         <div v-for="(color, type) in edgeColors" :key="type" class="legend-item">
-          <span class="color-line" :style="{ backgroundColor: color.color }"></span>
+          <span class="color-line" :style="{ backgroundColor: color.color }" />
           <span>{{ type }}</span>
         </div>
       </div>
     </div>
     <transition name="slide">
       <div v-if="isSidebarVisible" class="sidebar">
-        <button class="close-btn" @click="closeSidebar">&times;</button>
+        <button class="close-btn" @click="closeSidebar">
+          &times;
+        </button>
         <h3>Node Details</h3>
         <p><strong>Email:</strong> {{ selectedNode?.id }}</p>
         <p><strong>Connected Nodes:</strong> {{ selectedNode?.connections }}</p>
@@ -318,9 +330,9 @@ function searchNodes() {
 
 <style scoped>
 .network-container {
+  position: relative;
   display: flex;
   height: 80vh;
-  position: relative;
 }
 
 .graph-area {
@@ -338,31 +350,34 @@ function searchNodes() {
   gap: 10px;
 }
 
-.zoom-controls, .search-controls {
+.zoom-controls,
+ .search-controls {
   display: flex;
   gap: 5px;
 }
 
-.zoom-controls button, .search-controls button {
+.zoom-controls button,
+ .search-controls button {
   padding: 5px 10px;
 }
 
 .search-controls input {
-  padding: 5px;
   width: 200px;
+  padding: 5px;
 }
 
 .legend {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
+  background-color: rgb(255 255 255 / 80%);
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
-.legend h4, .legend h5 {
+.legend h4,
+ .legend h5 {
   margin: 5px 0;
 }
 
@@ -375,8 +390,8 @@ function searchNodes() {
 .color-dot {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
   margin-right: 5px;
+  border-radius: 50%;
 }
 
 .color-line {
@@ -386,25 +401,25 @@ function searchNodes() {
 }
 
 .sidebar {
-  width: 300px;
-  background-color: #f8f8f8;
-  padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
   bottom: 0;
+  width: 300px;
+  padding: 20px;
   overflow-y: auto;
+  background-color: #f8f8f8;
+  box-shadow: -2px 0 5px rgb(0 0 0 / 10%);
 }
 
 .close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
   font-size: 20px;
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .slide-enter-active,

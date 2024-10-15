@@ -23,7 +23,7 @@ export const useProjectVisualizationStore = defineStore('projectVisualization', 
     },
     async fetchProjectData() {
       try {
-        const response = await api.get(`/projects/${this.projectId}`,{
+        const response = await api.get(`/projects/${this.projectId}`, {
           baseURL: '/mock/',
         })
         this.requirementsMatrix = response.cr_matrix

@@ -1,13 +1,11 @@
 import { setupLayouts } from 'virtual:meta-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import type { RouteRecordRaw } from 'vue-router'
-import PluginExample from './modules/plugin.example'
 import type { Route } from '#/global'
 import useSettingsStore from '@/store/modules/settings'
-import secuflow from '@/router/modules/secuflow.ts'
-import overview from "@/router/modules/overview.ts";
-import projects from "@/router/modules/projects.ts";
-import statistics from "@/router/modules/statistics.ts";
+import overview from '@/router/modules/overview.ts'
+import projects from '@/router/modules/projects.ts'
+import statistics from '@/router/modules/statistics.ts'
 // 固定路由（默认路由）
 const constantRoutes: RouteRecordRaw[] = [
   {
