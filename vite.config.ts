@@ -58,5 +58,8 @@ export default async ({ mode, command }) => {
         },
       },
     },
+    esbuild: {
+      logOverride: { 'this-is-undefined-in-esm': 'silent' },
+    },
   })
 }

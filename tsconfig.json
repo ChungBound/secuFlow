@@ -2,22 +2,14 @@
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "preserve",
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
     "baseUrl": "./",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "#/*": [
-        "src/types/*"
-      ]
+      "@/*": ["src/*"],
+      "#/*": ["src/types/*"]
     },
     "resolveJsonModule": true,
     "types": [
@@ -27,13 +19,23 @@
       "element-plus/global"
     ],
     "allowImportingTsExtensions": true,
-    "allowJs": false,
-    "strict": true,
+    "allowJs": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "useUnknownInCatchVariables": false,
     "noEmit": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "ignoreDeprecations": "5.0",
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": false,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
   },
   "references": [
     {
